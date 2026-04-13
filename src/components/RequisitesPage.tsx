@@ -5,44 +5,270 @@ import { FOP_DATA } from "@/lib/fop-data";
 
 type Lang = "uk" | "en";
 
-const taxGroupLabel = FOP_DATA.taxGroup.includes("3")
-  ? "Group 3 single tax, 5% + 1% military levy"
-  : FOP_DATA.taxGroup;
-
-const vatLabel = FOP_DATA.isVAT ? "VAT payer" : "Non-VAT payer";
-const vatLabelUk = FOP_DATA.isVAT ? "Платник ПДВ" : "Не платник ПДВ";
 const bankAddressUk = "вул. Андріївська, 2/12, Київ, 04070, Україна";
 
-const COPY = {
+const T = {
   uk: {
     back: "Назад",
     download: "Завантажити",
     heroTitle: "Платіжні реквізити",
     heroSub: "ФОП Сухарєв Андрій Андрійович",
+    taxGroup: FOP_DATA.taxGroup,
+    vatStatus: FOP_DATA.isVAT ? "Платник ПДВ" : "Не платник ПДВ",
+    createdLabel: "Сформовано",
+    uah: {
+      langLabel: "UAH / Українська",
+      title: "Платіжні реквізити в гривні",
+      subtitle: "Для локальних переказів у гривні в межах України",
+      beneficiary: "Отримувач",
+      name: "Найменування",
+      nameValue: FOP_DATA.nameUk,
+      fullName: "ПІБ",
+      fullNameValue: FOP_DATA.nameUk,
+      taxId: "ІПН",
+      regDate: "Дата реєстрації",
+      taxGroupLabel: "Група оподаткування",
+      vatLabel: "Статус ПДВ",
+      address: "Адреса",
+      addressValue: FOP_DATA.addressUk,
+      kved: "КВЕД",
+      kvedValue: FOP_DATA.kved,
+      bankSection: "Банківські реквізити",
+      bank: "Банк",
+      bankValue: FOP_DATA.bank.nameUk,
+      mfo: "МФО",
+      bankAddress: "Адреса банку",
+      bankAddressValue: bankAddressUk,
+      iban: "IBAN UAH",
+    },
+    usd: {
+      langLabel: "USD / Долар США",
+      title: "Платіжні реквізити в доларах",
+      subtitle: "Для міжнародних переказів у доларах США",
+      beneficiary: "Отримувач",
+      name: "Найменування",
+      nameValue: "ФОП Сухарєв Андрій",
+      fullName: "ПІБ",
+      fullNameValue: FOP_DATA.fullNameEn,
+      taxId: "ІПН",
+      regDate: "Дата реєстрації",
+      taxGroupLabel: "Група оподаткування",
+      vatLabel: "Статус ПДВ",
+      address: "Адреса",
+      addressValue: FOP_DATA.addressEn,
+      bankSection: "Банківські реквізити",
+      bank: "Банк",
+      bankValue: FOP_DATA.bank.name,
+      bankAddress: "Адреса банку",
+      bankAddressValue: FOP_DATA.bank.address,
+      iban: "IBAN USD",
+    },
+    eur: {
+      langLabel: "EUR / Євро",
+      title: "Платіжні реквізити в євро",
+      subtitle: "Для міжнародних переказів у євро",
+      beneficiary: "Отримувач",
+      name: "Найменування",
+      nameValue: "ФОП Сухарєв Андрій",
+      fullName: "ПІБ",
+      fullNameValue: FOP_DATA.fullNameEn,
+      taxId: "ІПН",
+      regDate: "Дата реєстрації",
+      taxGroupLabel: "Група оподаткування",
+      vatLabel: "Статус ПДВ",
+      address: "Адреса",
+      addressValue: FOP_DATA.addressEn,
+      bankSection: "Банківські реквізити",
+      bank: "Банк",
+      bankValue: FOP_DATA.bank.name,
+      bankAddress: "Адреса банку",
+      bankAddressValue: FOP_DATA.bank.address,
+      iban: "IBAN EUR",
+    },
   },
   en: {
     back: "Back",
     download: "Download",
     heroTitle: "Payment details",
     heroSub: "PE Andrii Sukhariev",
+    taxGroup: FOP_DATA.taxGroup.includes("3")
+      ? "Group 3 single tax, 5% + 1% military levy"
+      : FOP_DATA.taxGroup,
+    vatStatus: FOP_DATA.isVAT ? "VAT payer" : "Non-VAT payer",
+    createdLabel: "Created on",
+    uah: {
+      langLabel: "UAH / Ukrainian hryvnia",
+      title: "UAH payment details",
+      subtitle: "For local transfers in Ukrainian hryvnia",
+      beneficiary: "Beneficiary",
+      name: "Beneficiary name",
+      nameValue: FOP_DATA.nameUk,
+      fullName: "Full name",
+      fullNameValue: FOP_DATA.nameUk,
+      taxId: "Tax ID",
+      regDate: "Registration date",
+      taxGroupLabel: "Tax group",
+      vatLabel: "VAT status",
+      address: "Address",
+      addressValue: FOP_DATA.addressUk,
+      kved: "KVED",
+      kvedValue: FOP_DATA.kved,
+      bankSection: "Bank details",
+      bank: "Bank",
+      bankValue: FOP_DATA.bank.nameUk,
+      mfo: "MFO",
+      bankAddress: "Bank address",
+      bankAddressValue: bankAddressUk,
+      iban: "UAH IBAN",
+    },
+    usd: {
+      langLabel: "USD / US dollar",
+      title: "USD payment details",
+      subtitle: "For international transfers in US dollars",
+      beneficiary: "Beneficiary",
+      name: "Beneficiary name",
+      nameValue: "PE Andrii Sukhariev",
+      fullName: "Full name",
+      fullNameValue: FOP_DATA.fullNameEn,
+      taxId: "Tax ID",
+      regDate: "Registration date",
+      taxGroupLabel: "Tax group",
+      vatLabel: "VAT status",
+      address: "Address",
+      addressValue: FOP_DATA.addressEn,
+      bankSection: "Bank details",
+      bank: "Bank",
+      bankValue: FOP_DATA.bank.name,
+      bankAddress: "Bank address",
+      bankAddressValue: FOP_DATA.bank.address,
+      iban: "USD IBAN",
+    },
+    eur: {
+      langLabel: "EUR / Euro",
+      title: "EUR payment details",
+      subtitle: "For international transfers in euro",
+      beneficiary: "Beneficiary",
+      name: "Beneficiary name",
+      nameValue: "PE Andrii Sukhariev",
+      fullName: "Full name",
+      fullNameValue: FOP_DATA.fullNameEn,
+      taxId: "Tax ID",
+      regDate: "Registration date",
+      taxGroupLabel: "Tax group",
+      vatLabel: "VAT status",
+      address: "Address",
+      addressValue: FOP_DATA.addressEn,
+      bankSection: "Bank details",
+      bank: "Bank",
+      bankValue: FOP_DATA.bank.name,
+      bankAddress: "Bank address",
+      bankAddressValue: FOP_DATA.bank.address,
+      iban: "EUR IBAN",
+    },
   },
 } as const;
 
+type LangT = (typeof T)[Lang];
+type CurrencySection = LangT["uah"] | LangT["usd"] | LangT["eur"];
+
+function PaymentSection({
+  t,
+  parent,
+  symbol,
+  iban,
+  isPageBreak,
+}: {
+  t: CurrencySection;
+  parent: LangT;
+  symbol: string;
+  iban: string;
+  isPageBreak?: boolean;
+}) {
+  return (
+    <section className={`document-language-block${isPageBreak ? " document-page-break" : ""}`}>
+      <div className="document-currency-mark" aria-hidden="true">{symbol}</div>
+      <div className="document-meta-row">
+        <div className="document-language">{t.langLabel}</div>
+      </div>
+      <div className="document-stack">
+        <div className="document-sheet-title">{t.title}</div>
+        <div className="document-sheet-subtitle">{t.subtitle}</div>
+
+        <div className="document-section-title">{t.beneficiary}</div>
+        <div className="document-list">
+          <div className="document-item">
+            <div className="document-key">{t.name}</div>
+            <div className="document-value">{t.nameValue}</div>
+          </div>
+          <div className="document-item">
+            <div className="document-key">{t.fullName}</div>
+            <div className="document-value">{t.fullNameValue}</div>
+          </div>
+          <div className="document-item">
+            <div className="document-key">{t.taxId}</div>
+            <div className="document-value">{FOP_DATA.ipn}</div>
+          </div>
+          <div className="document-item">
+            <div className="document-key">{t.regDate}</div>
+            <div className="document-value">{FOP_DATA.registrationDate}</div>
+          </div>
+          <div className="document-item">
+            <div className="document-key">{t.taxGroupLabel}</div>
+            <div className="document-value">{parent.taxGroup}</div>
+          </div>
+          <div className="document-item">
+            <div className="document-key">{t.vatLabel}</div>
+            <div className="document-value">{parent.vatStatus}</div>
+          </div>
+          <div className="document-item">
+            <div className="document-key">{t.address}</div>
+            <div className="document-value">{t.addressValue}</div>
+          </div>
+          {"kved" in t && (
+            <div className="document-item">
+              <div className="document-key">{(t as typeof T["uk"]["uah"]).kved}</div>
+              <div className="document-value">{(t as typeof T["uk"]["uah"]).kvedValue}</div>
+            </div>
+          )}
+        </div>
+
+        <div className="document-section-title">{t.bankSection}</div>
+        <div className="document-list">
+          <div className="document-item">
+            <div className="document-key">{t.bank}</div>
+            <div className="document-value">{t.bankValue}</div>
+          </div>
+          {"mfo" in t && (
+            <div className="document-item">
+              <div className="document-key">МФО</div>
+              <div className="document-value">{FOP_DATA.bank.mfo}</div>
+            </div>
+          )}
+          <div className="document-item">
+            <div className="document-key">{t.bankAddress}</div>
+            <div className="document-value">{t.bankAddressValue}</div>
+          </div>
+          <div className="document-item">
+            <div className="document-key">SWIFT</div>
+            <div className="document-value">{FOP_DATA.bank.swift}</div>
+          </div>
+          <div className="document-item">
+            <div className="document-key">MFO</div>
+            <div className="document-value">{FOP_DATA.bank.mfo}</div>
+          </div>
+          <div className="document-item">
+            <div className="document-key">{t.iban}</div>
+            <div className="document-value document-mono">{iban}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function RequisitesPage({ lang }: { lang: Lang }) {
-  const t = COPY[lang];
+  const t = T[lang];
   const prefix = lang === "en" ? "/en" : "";
-
-  const createdAtEn = new Intl.DateTimeFormat("en-GB", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  }).format(new Date());
-
-  const createdAtUk = new Intl.DateTimeFormat("uk-UA", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  }).format(new Date());
 
   return (
     <div className="document-page">
@@ -86,213 +312,9 @@ export default function RequisitesPage({ lang }: { lang: Lang }) {
         <p className="requisites-subtitle">{t.heroSub}</p>
       </div>
 
-      <section className="document-language-block">
-        <div className="document-currency-mark" aria-hidden="true">₴</div>
-        <div className="document-meta-row">
-          <div className="document-language">UAH / Українська</div>
-          <div className="document-created-at">Сформовано {createdAtUk}</div>
-        </div>
-        <div className="document-stack">
-          <div className="document-sheet-title">Платіжні реквізити в гривні</div>
-          <div className="document-sheet-subtitle">Для локальних переказів у гривні в межах України</div>
-
-          <div className="document-section-title">Отримувач</div>
-          <div className="document-list">
-            <div className="document-item">
-              <div className="document-key">Найменування</div>
-              <div className="document-value">{FOP_DATA.nameUk}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">ПІБ</div>
-              <div className="document-value">{FOP_DATA.nameUk}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">ІПН</div>
-              <div className="document-value">{FOP_DATA.ipn}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Дата реєстрації</div>
-              <div className="document-value">{FOP_DATA.registrationDate}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Група оподаткування</div>
-              <div className="document-value">{FOP_DATA.taxGroup}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Статус ПДВ</div>
-              <div className="document-value">{vatLabelUk}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Адреса</div>
-              <div className="document-value">{FOP_DATA.addressUk}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">КВЕД</div>
-              <div className="document-value">{FOP_DATA.kved}</div>
-            </div>
-          </div>
-
-          <div className="document-section-title">Банківські реквізити</div>
-          <div className="document-list">
-            <div className="document-item">
-              <div className="document-key">Банк</div>
-              <div className="document-value">{FOP_DATA.bank.nameUk}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">МФО</div>
-              <div className="document-value">{FOP_DATA.bank.mfo}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Адреса банку</div>
-              <div className="document-value">{bankAddressUk}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">SWIFT</div>
-              <div className="document-value">{FOP_DATA.bank.swift}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">IBAN UAH</div>
-              <div className="document-value document-mono">{FOP_DATA.bank.accounts.UAH}</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="document-language-block document-page-break">
-        <div className="document-currency-mark" aria-hidden="true">$</div>
-        <div className="document-meta-row">
-          <div className="document-language">USD / English</div>
-          <div className="document-created-at">Created on {createdAtEn}</div>
-        </div>
-        <div className="document-stack">
-          <div className="document-sheet-title">USD payment details</div>
-          <div className="document-sheet-subtitle">For international transfers in US dollars</div>
-
-          <div className="document-section-title">Beneficiary</div>
-          <div className="document-list">
-            <div className="document-item">
-              <div className="document-key">Beneficiary name</div>
-              <div className="document-value">PE Andrii Sukhariev</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Full name</div>
-              <div className="document-value">{FOP_DATA.fullNameEn}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Tax ID</div>
-              <div className="document-value">{FOP_DATA.ipn}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Registration date</div>
-              <div className="document-value">{FOP_DATA.registrationDate}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Tax group</div>
-              <div className="document-value">{taxGroupLabel}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">VAT status</div>
-              <div className="document-value">{vatLabel}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Address</div>
-              <div className="document-value">{FOP_DATA.addressEn}</div>
-            </div>
-          </div>
-
-          <div className="document-section-title">Bank</div>
-          <div className="document-list">
-            <div className="document-item">
-              <div className="document-key">Bank</div>
-              <div className="document-value">{FOP_DATA.bank.name}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Bank address</div>
-              <div className="document-value">{FOP_DATA.bank.address}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">SWIFT</div>
-              <div className="document-value">{FOP_DATA.bank.swift}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">MFO</div>
-              <div className="document-value">{FOP_DATA.bank.mfo}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">USD IBAN</div>
-              <div className="document-value document-mono">{FOP_DATA.bank.accounts.USD}</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="document-language-block document-page-break">
-        <div className="document-currency-mark" aria-hidden="true">€</div>
-        <div className="document-meta-row">
-          <div className="document-language">EUR / English</div>
-          <div className="document-created-at">Created on {createdAtEn}</div>
-        </div>
-        <div className="document-stack">
-          <div className="document-sheet-title">EUR payment details</div>
-          <div className="document-sheet-subtitle">For international transfers in euro</div>
-
-          <div className="document-section-title">Beneficiary</div>
-          <div className="document-list">
-            <div className="document-item">
-              <div className="document-key">Beneficiary name</div>
-              <div className="document-value">PE Andrii Sukhariev</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Full name</div>
-              <div className="document-value">{FOP_DATA.fullNameEn}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Tax ID</div>
-              <div className="document-value">{FOP_DATA.ipn}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Registration date</div>
-              <div className="document-value">{FOP_DATA.registrationDate}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Tax group</div>
-              <div className="document-value">{taxGroupLabel}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">VAT status</div>
-              <div className="document-value">{vatLabel}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Address</div>
-              <div className="document-value">{FOP_DATA.addressEn}</div>
-            </div>
-          </div>
-
-          <div className="document-section-title">Bank</div>
-          <div className="document-list">
-            <div className="document-item">
-              <div className="document-key">Bank</div>
-              <div className="document-value">{FOP_DATA.bank.name}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">Bank address</div>
-              <div className="document-value">{FOP_DATA.bank.address}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">SWIFT</div>
-              <div className="document-value">{FOP_DATA.bank.swift}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">MFO</div>
-              <div className="document-value">{FOP_DATA.bank.mfo}</div>
-            </div>
-            <div className="document-item">
-              <div className="document-key">EUR IBAN</div>
-              <div className="document-value document-mono">{FOP_DATA.bank.accounts.EUR}</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PaymentSection t={t.uah} parent={t} symbol="₴" iban={FOP_DATA.bank.accounts.UAH} />
+      <PaymentSection t={t.usd} parent={t} symbol="$" iban={FOP_DATA.bank.accounts.USD} isPageBreak />
+      <PaymentSection t={t.eur} parent={t} symbol="€" iban={FOP_DATA.bank.accounts.EUR} isPageBreak />
     </div>
   );
 }

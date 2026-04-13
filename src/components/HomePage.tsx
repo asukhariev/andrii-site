@@ -7,19 +7,19 @@ type Lang = "uk" | "en";
 const COPY = {
   uk: {
     title: <>Від ідеї до компанії.</>,
-    sub: "Я Андрій. AI-агенти та стратегія штучного інтелекту, запуск, архітектура, дизайн, команда, юридичка, код — закриваю end-to-end. Одна людина замість цілого відділу. Напиши — обговоримо.",
+    sub: "Я Андрій. ШІ-агенти та стратегія штучного інтелекту, автоматизація, вирішення проблем, запуск, архітектура, дизайн, навчання, команда, код — закриваю end-to-end. Одна людина замість цілого відділу — це нова реальність. Напиши — обговоримо.",
     email: "Написати",
     pay: "Реквізити",
     ogTitle: "Андрій — Інженер та підприємець",
-    ogDesc: "AI-агенти та стратегія штучного інтелекту, запуск, архітектура, дизайн, команда, юридичка, код — end-to-end.",
+    ogDesc: "AI-агенти та стратегія штучного інтелекту, запуск, архітектура, дизайн, команда, код, автоматизація, Gov-tech — end-to-end.",
   },
   en: {
     title: <>From idea to company.</>,
-    sub: "I'm Andrii. AI agents and applied AI strategy, launch, architecture, design, team, legal, code — I close it all end-to-end. One person instead of a whole department. Reach out and let's talk.",
+    sub: "I'm Andrii. AI agents and applied AI strategy, automation, problem solving, launch, architecture, design, training, team, code — I close it all end-to-end. One person instead of a whole department — this is the new reality. Reach out and let's talk.",
     email: "Email me",
     pay: "Pay me",
     ogTitle: "Andrii — Engineer & Entrepreneur",
-    ogDesc: "AI agents and applied AI strategy, launch, architecture, design, team, legal, code — end-to-end.",
+    ogDesc: "AI agents and applied AI strategy, launch, architecture, design, team, code, automation, Gov-tech — end-to-end.",
   },
 } as const;
 
@@ -145,11 +145,6 @@ export default function HomePage({ lang }: { lang: Lang }) {
         </nav>
       </div>
 
-      <a href="#top" className="home-up" aria-label="Back to top">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-          <path d="M12 19V5M5 12l7-7 7 7" />
-        </svg>
-      </a>
     </main>
     </>
   );
