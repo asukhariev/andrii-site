@@ -8,7 +8,7 @@ export function exportFopDataPDF() {
     format: "a5",
   });
   const taxGroupLabel = FOP_DATA.taxGroup.includes("3")
-    ? "Group 3 single tax, 5%"
+    ? "Group 3 single tax, 5% + 1% military levy"
     : FOP_DATA.taxGroup;
 
   const left = 18;

@@ -6,7 +6,7 @@ export const FOP_DATA = {
   addressUk: "м. Кременчук, вул. Тараса Бульби 18, кв. 25",
   addressEn: "18/25 Tarasa Bulby St., Kremenchuk, Ukraine",
   kved: "62.01 — Комп'ютерне програмування",
-  taxGroup: "3-тя група, 5%",
+  taxGroup: "3-тя група, 5% + 1% ВЗ",
   isVAT: false,
   registrationDate: "18.08.2017",
   bank: {
