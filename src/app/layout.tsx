@@ -20,14 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
       <html lang="uk">
         <head>
-          <title>Andrii — Engineer & Entrepreneur</title>
-          <meta name="description" content="AI agents and applied AI strategy, launch, architecture, design, team, legal, code — end-to-end." />
-          <meta property="og:title" content="Andrii — Engineer & Entrepreneur" />
-          <meta property="og:description" content="AI agents and applied AI strategy, launch, architecture, design, team, legal, code — end-to-end." />
-          <meta property="og:image" content="https://andri.website/api/og" />
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:image" content="https://andri.website/api/og" />
           <link rel="icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         </head>

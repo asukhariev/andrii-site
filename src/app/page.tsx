@@ -11,12 +11,16 @@ const COPY = {
     sub: "Я Андрій. AI-агенти та стратегія штучного інтелекту, запуск, архітектура, дизайн, команда, юридичка, код — закриваю end-to-end. Одна людина замість цілого відділу. Напиши — обговоримо.",
     email: "Написати",
     pay: "Реквізити",
+    ogTitle: "Андрій — Інженер та підприємець",
+    ogDesc: "AI-агенти та стратегія штучного інтелекту, запуск, архітектура, дизайн, команда, юридичка, код — end-to-end.",
   },
   en: {
     title: <>From idea to company.</>,
     sub: "I'm Andrii. AI agents and applied AI strategy, launch, architecture, design, team, legal, code — I close it all end-to-end. One person instead of a whole department. Reach out and let's talk.",
     email: "Email me",
     pay: "Pay me",
+    ogTitle: "Andrii — Engineer & Entrepreneur",
+    ogDesc: "AI agents and applied AI strategy, launch, architecture, design, team, legal, code — end-to-end.",
   },
 } as const;
 
@@ -25,6 +29,15 @@ export default function HomePage() {
   const t = COPY[lang];
 
   return (
+    <>
+    <head>
+      <title>{t.ogTitle}</title>
+      <meta property="og:title" content={t.ogTitle} />
+      <meta property="og:description" content={t.ogDesc} />
+      <meta property="og:image" content={`https://andri.website/api/og?lang=${lang}`} />
+      <meta name="description" content={t.ogDesc} />
+      <meta name="twitter:image" content={`https://andri.website/api/og?lang=${lang}`} />
+    </head>
     <main className="home-landing">
       {/* Floating tool icons — scattered around the page */}
       <div className="home-float home-float--figma" aria-hidden title="Figma">
@@ -143,5 +156,6 @@ export default function HomePage() {
         </svg>
       </a>
     </main>
+    </>
   );
 }
