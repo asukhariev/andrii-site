@@ -942,13 +942,90 @@ tr:hover td { background: rgba(255, 255, 255, 0.5); }
   align-items: center;
 }
 
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.site-header-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #111;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.site-header-back:hover {
+  opacity: 0.6;
+}
+
+.site-header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.site-header-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: #111;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.site-header-download:hover {
+  opacity: 0.8;
+}
+
+.site-header .home-lang-switch {
+  position: static;
+}
+
+.requisites-hero {
+  text-align: center;
+  padding: 40px 24px 0;
+}
+
+.requisites-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -0.02em;
+}
+
+.requisites-subtitle {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #6e6e73;
+}
+
 .document-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 48px;
-  padding: 40px 24px 80px;
+  padding: 0 24px 80px;
   background: #fff;
 }
 
@@ -1136,7 +1213,9 @@ tr:hover td { background: rgba(255, 255, 255, 0.5); }
   .line-item { grid-template-columns: 1fr; }
   .tabs { width: 100%; overflow-x: auto; }
   .modal { padding: 22px; }
-  .document-page { gap: 44px; padding: 40px 16px 56px; }
+  .document-page { gap: 44px; padding: 0 16px 56px; }
+  .site-header { padding: 16px 0; }
+  .hide-mobile { display: none; }
   .document-meta-row { flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 14px; }
   .document-item { grid-template-columns: 1fr; gap: 4px; }
   .document-key,

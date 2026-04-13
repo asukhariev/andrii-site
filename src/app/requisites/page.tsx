@@ -1,6 +1,10 @@
 "use client";
 
+import { useState } from "react";
+import Link from "next/link";
 import { FOP_DATA } from "@/lib/fop-data";
+
+type Lang = "uk" | "en";
 
 const taxGroupLabel = FOP_DATA.taxGroup.includes("3")
   ? "Group 3 single tax, 5% + 1% military levy"
@@ -10,7 +14,25 @@ const vatLabel = FOP_DATA.isVAT ? "VAT payer" : "Non-VAT payer";
 const vatLabelUk = FOP_DATA.isVAT ? "Платник ПДВ" : "Не платник ПДВ";
 const bankAddressUk = "вул. Андріївська, 2/12, Київ, 04070, Україна";
 
+const COPY = {
+  uk: {
+    back: "Назад",
+    download: "Завантажити",
+    heroTitle: "Платіжні реквізити",
+    heroSub: "ФОП Сухарєв Андрій Андрійович",
+  },
+  en: {
+    back: "Back",
+    download: "Download",
+    heroTitle: "Payment details",
+    heroSub: "PE Andrii Sukhariev",
+  },
+} as const;
+
 export default function FopDocumentPage() {
+  const [lang, setLang] = useState<Lang>("uk");
+  const t = COPY[lang];
+
   const createdAtEn = new Intl.DateTimeFormat("en-GB", {
     day: "2-digit",
     month: "long",
@@ -25,6 +47,48 @@ export default function FopDocumentPage() {
 
   return (
     <div className="document-page">
+      <header className="site-header">
+        <Link href="/" className="site-header-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          {t.back}
+        </Link>
+        <div className="site-header-center">
+          <button className="site-header-download" onClick={() => window.print()}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            <span className="hide-mobile">{t.download}</span>
+          </button>
+        </div>
+        <div className="home-lang-switch" role="tablist" aria-label="Language switch">
+          <button
+            className={`home-lang-button ${lang === "uk" ? "active" : ""}`}
+            onClick={() => setLang("uk")}
+            type="button"
+            role="tab"
+            aria-selected={lang === "uk"}
+          >
+            UA
+          </button>
+          <button
+            className={`home-lang-button ${lang === "en" ? "active" : ""}`}
+            onClick={() => setLang("en")}
+            type="button"
+            role="tab"
+            aria-selected={lang === "en"}
+          >
+            EN
+          </button>
+        </div>
+      </header>
+
+      <div className="requisites-hero">
+        <h1 className="requisites-title">{t.heroTitle}</h1>
+        <p className="requisites-subtitle">{t.heroSub}</p>
+      </div>
+
       <section className="document-language-block">
         <div className="document-currency-mark" aria-hidden="true">₴</div>
         <div className="document-meta-row">
@@ -232,12 +296,6 @@ export default function FopDocumentPage() {
           </div>
         </div>
       </section>
-
-      <div className="document-actions">
-        <button className="document-download-button" onClick={() => window.print()}>
-          Завантажити
-        </button>
-      </div>
     </div>
   );
 }
