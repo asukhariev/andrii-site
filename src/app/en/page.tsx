@@ -1,5 +1,5 @@
 import HomePage from "@/components/HomePage";
 
 export default function Page() {
-  return <HomePage lang="uk" />;
+  return <HomePage lang="en" />;
 }

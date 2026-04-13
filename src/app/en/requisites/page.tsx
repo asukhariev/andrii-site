@@ -1,5 +1,5 @@
 import RequisitesPage from "@/components/RequisitesPage";
 
 export default function Page() {
-  return <RequisitesPage lang="uk" />;
+  return <RequisitesPage lang="en" />;
 }
