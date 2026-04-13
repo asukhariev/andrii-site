@@ -145,8 +145,8 @@ export default function HomePage() {
           <Link href="/requisites" className="home-linkitem home-linkitem--active">
             {t.pay}
           </Link>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="home-linkitem">LinkedIn</a>
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="home-linkitem">GitHub</a>
+          <a href="https://www.linkedin.com/in/andrii-sukhariev-011a03b3/" target="_blank" rel="noopener noreferrer" className="home-linkitem">LinkedIn</a>
+          <a href="https://github.com/asukhariev" target="_blank" rel="noopener noreferrer" className="home-linkitem">GitHub</a>
         </nav>
       </div>
 
