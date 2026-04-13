@@ -14,7 +14,7 @@ const NAV = [
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isDocumentPage = pathname === "/" || pathname === "/fop-document";
+  const isDocumentPage = pathname === "/" || pathname === "/requisites";
 
   if (isDocumentPage) {
     return (

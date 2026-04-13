@@ -129,7 +129,7 @@ export default function HomePage() {
         </div>
 
         <nav className="home-links" aria-label="Links">
-          <Link href="/fop-document" className="home-linkitem home-linkitem--active">
+          <Link href="/requisites" className="home-linkitem home-linkitem--active">
             {t.pay}
           </Link>
           <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="home-linkitem">LinkedIn</a>
